@@ -56,6 +56,12 @@ abstract class Plex_MachineAbstract implements Plex_MachineInterface
 	protected $port;
 	
 	/**
+	 * The Plex token used to authenticate
+	 * @var string
+	 */
+	protected $token;
+	
+	/**
 	 * Returns the base URL, which will be standard for all requests made to the
 	 * Plex machine.
 	 *
@@ -139,9 +145,13 @@ abstract class Plex_MachineAbstract implements Plex_MachineInterface
 	protected function makeCall($url)
 	{
 		$ch = curl_init();
-		
+		$headers = array(
+			"x-plex-token: " . $this->token;
+			
+		);
 		curl_setopt($ch, CURLOPT_URL, $url);
 		curl_setopt($ch, CURLOPT_HEADER, FALSE);
+		curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
 		curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
 		
 		$response = curl_exec($ch);

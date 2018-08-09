@@ -55,4 +55,11 @@ interface Plex_MachineInterface
 	 * @return integer The port on which the Plex machine listens.
 	 */
 	public function getPort();
+	
+	/**
+	 * Returns the authentication token.
+	 *
+	 * @return string The Plex authentication token.
+	 */
+	public function getToken();
 }
