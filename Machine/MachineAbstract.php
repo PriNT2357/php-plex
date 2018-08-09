@@ -146,7 +146,7 @@ abstract class Plex_MachineAbstract implements Plex_MachineInterface
 	{
 		$ch = curl_init();
 		$headers = array(
-			"x-plex-token: " . $this->token;
+			"x-plex-token: " . $this->token
 			
 		);
 		curl_setopt($ch, CURLOPT_URL, $url);

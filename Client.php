@@ -297,4 +297,16 @@ class Plex_Client extends Plex_MachineAbstract
 	{
 		$this->server = $server;
 	}
+	
+	/**
+	 * Returns the Plex authentication token.
+	 *
+	 * @uses Plex_MachineAbstract::$token
+	 *
+	 * @return string The Plex authentication token.
+	 */
+	public function getToken()
+	{
+		return $this->token;
+	}
 }

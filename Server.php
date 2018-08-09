@@ -52,6 +52,7 @@ class Plex_Server extends Plex_MachineAbstract
 	 * @param string $name The name of the Plex server.
 	 * @param string $address The IP address of the Plex server.
 	 * @param integer $port The port on which the Plex server is listening. 
+	 * @param string $token [optional] The Plex authentication token to use.
 	 *
 	 * @uses Plex_MachineAbstract::$name
 	 * @uses Plex_MachineAbstract::$address
@@ -60,11 +61,12 @@ class Plex_Server extends Plex_MachineAbstract
 	 *
 	 * @return void
 	 */
-	public function __construct($name, $address, $port)
+	public function __construct($name, $address, $port, $token = null)
 	{
 		$this->name = $name;
 		$this->address = $address;
 		$this->port = $port ? $port : self::DEFAULT_PORT;
+		$this->token = $token;
 	}
 	
 	/**
@@ -163,5 +165,17 @@ class Plex_Server extends Plex_MachineAbstract
 	public function getPort()
 	{
 		return $this->port;
+	}
+	
+	/**
+	 * Returns the Plex authentication token.
+	 *
+	 * @uses Plex_MachineAbstract::$token
+	 *
+	 * @return string The Plex authentication token.
+	 */
+	public function getToken()
+	{
+		return $this->token;
 	}
 }
